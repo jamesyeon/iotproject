@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Oct  1 13:31:59 2018
+
+@author: user
+"""
+
+#날짜랑 시간 사이에 T 없애기.
+
+with open('1105cut.txt')as f:
+    with open('1105result.txt', 'w')as f2:
+        for line in f:
+            f2.write(line.replace('T', ' '))  
