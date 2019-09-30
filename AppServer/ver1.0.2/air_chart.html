@@ -1,0 +1,37 @@
+  <html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);z
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          <%DATADATA%>
+        ]);
+
+        var options = {
+          title: 'Public_pm10 and Sensor_pm10 Graph',
+          curveType: 'function',
+          legend: { position: 'right' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="curve_chart" style="width: 1000px; height: 600px"></div>
+    <form align="center" id="form1" action="/compare_chart_option" method="get">
+      <b>센서번호</b>
+      <input type="text" name="sensor" id="sensor" size=32>
+      <input type="submit" value="Go!">
+      <br>
+      <b>기간
+      <input type="text" name="datefrom" size=14 value="">부터
+      <input type="text" name="dateto" size=14 value="">까지</b>
+    </form>
+  </body>
+</html>
